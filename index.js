@@ -1,6 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const token = '6438028060:AAGGMR5agaRxfcacyWpINJIVQuoKHDewXtE'; // Replace with your bot's API token
-
+const app = require('express')();
 // Create a bot instance
 const bot = new TelegramBot(token, { polling: true });
 
@@ -17,4 +17,9 @@ bot.on('message', (msg) => {
   } else {
     bot.sendMessage(chatId, 'I don\'t understand that command. Type /help to see available commands.');
   }
+});
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, function () {
+    console.log(`Server is running at port ${PORT}`);
 });
