@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('./userController'); // Import the user controller
+const userController = require('../controllers/userController'); // Import the user controller
 
 // Create a new user
 router.post('/users', userController.createUser);

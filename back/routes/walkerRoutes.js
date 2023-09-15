@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const walkerController = require('./walkerController'); // Import the walker controller
+const walkerController = require('../controllers/walkerController'); // Import the walker controller
 
 // Create a new walker
 router.post('/walkers', walkerController.createWalker);

@@ -1,19 +1,17 @@
-const express = require('express');
-const router = express.Router();
 const userService = require('../services/userService'); // Import the user service
 
 // Create a new user
-router.post('/users', async (req, res) => {
+async function createUser(req, res) {
   try {
     const newUser = await userService.createUser(req.body);
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Get a user by ID
-router.get('/users/:userId', async (req, res) => {
+async function findUserById(req, res) {
   const userId = req.params.userId;
   try {
     const user = await userService.findUserById(userId);
@@ -25,10 +23,10 @@ router.get('/users/:userId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Update user information by ID
-router.put('/users/:userId', async (req, res) => {
+async function updateUserById(req, res) {
   const userId = req.params.userId;
   const newData = req.body;
   try {
@@ -41,10 +39,10 @@ router.put('/users/:userId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Delete a user by ID
-router.delete('/users/:userId', async (req, res) => {
+async function deleteUserById(req, res) {
   const userId = req.params.userId;
   try {
     await userService.deleteUserById(userId);
@@ -52,6 +50,11 @@ router.delete('/users/:userId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
-module.exports = router;
+module.exports = {
+  createUser,
+  findUserById,
+  updateUserById,
+  deleteUserById,
+};

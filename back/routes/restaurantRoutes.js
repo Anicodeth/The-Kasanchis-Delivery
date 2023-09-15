@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const restaurantController = require('./restaurantController'); // Import the restaurant controller
+const restaurantController = require('../controllers/restaurantController'); // Import the restaurant controller
 
 // Create a new restaurant
 router.post('/restaurants', restaurantController.createRestaurant);

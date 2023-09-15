@@ -18,6 +18,9 @@ const restaurantSchema = new mongoose.Schema({
 
   menu: [
     {
+      _id:{
+        type:mongoose.Schema.Types.ObjectId
+      },
       itemName: {
         type:String
     },

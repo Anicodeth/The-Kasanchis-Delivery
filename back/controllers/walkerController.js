@@ -1,19 +1,17 @@
-const express = require('express');
-const router = express.Router();
 const walkerService = require('../services/walkerService'); // Import the walker service
 
 // Create a new walker
-router.post('/walkers', async (req, res) => {
+async function createWalker(req, res) {
   try {
     const newWalker = await walkerService.createWalker(req.body);
     res.status(201).json(newWalker);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Get a walker by ID
-router.get('/walkers/:walkerId', async (req, res) => {
+async function findWalkerById(req, res) {
   const walkerId = req.params.walkerId;
   try {
     const walker = await walkerService.findWalkerById(walkerId);
@@ -25,10 +23,10 @@ router.get('/walkers/:walkerId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Update walker information by ID
-router.put('/walkers/:walkerId', async (req, res) => {
+async function updateWalkerById(req, res) {
   const walkerId = req.params.walkerId;
   const newData = req.body;
   try {
@@ -41,10 +39,10 @@ router.put('/walkers/:walkerId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Delete a walker by ID
-router.delete('/walkers/:walkerId', async (req, res) => {
+async function deleteWalkerById(req, res) {
   const walkerId = req.params.walkerId;
   try {
     await walkerService.deleteWalkerById(walkerId);
@@ -52,10 +50,10 @@ router.delete('/walkers/:walkerId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
 // Find walkers near a restaurant by coordinates
-router.get('/walkers/near-restaurant', async (req, res) => {
+async function findWalkersNearRestaurant(req, res) {
   const restaurantCoordinates = req.query.coordinates; // Extract restaurant coordinates from query params
   try {
     // Parse restaurantCoordinates to an array of numbers (e.g., [longitude, latitude])
@@ -65,6 +63,12 @@ router.get('/walkers/near-restaurant', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
-});
+}
 
-module.exports = router;
+module.exports = {
+  createWalker,
+  findWalkerById,
+  updateWalkerById,
+  deleteWalkerById,
+  findWalkersNearRestaurant,
+};
