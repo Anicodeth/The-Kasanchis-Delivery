@@ -43,10 +43,10 @@ const walkerRoutes = require("./routes/walkerRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 // Route definitions
 const VERSION = "v1";
-app.use(`/api/${VERSION}/user`, userRoutes);
-app.use(`/api/${VERSION}/restaurant`, restaurantRoutes);
-app.use(`/api/${VERSION}/walker`, walkerRoutes);
-app.use(`/api/${VERSION}/order`, orderRoutes);
+app.use(`/api/${VERSION}/`, userRoutes);
+app.use(`/api/${VERSION}/`, restaurantRoutes);
+app.use(`/api/${VERSION}/`, walkerRoutes);
+app.use(`/api/${VERSION}/`, orderRoutes);
 
 app.listen(process.env.PORT || 4000, () => {
   console.log(`Server is running on port: ${process.env.PORT || 4000}`);
