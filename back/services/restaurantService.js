@@ -71,6 +71,17 @@ async function getRestaurantMenuById(restaurantId) {
     }
   }
 
+
+  async function getAllRestaurants() {
+    try {
+      const restaurants = await Restaurant.find({});
+      return restaurants;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 module.exports = {
   createRestaurant,
   findRestaurantById,
@@ -78,4 +89,5 @@ module.exports = {
   deleteRestaurantById,
     getRestaurantMenuById,
     addMenuItemToRestaurant,
+    getAllRestaurants
 };

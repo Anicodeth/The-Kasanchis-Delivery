@@ -65,10 +65,21 @@ async function findWalkersNearRestaurant(req, res) {
   }
 }
 
+async function getAllWalkers(req, res) {
+  try {
+    const allWalkers = await walkerService.getAllWalkers();
+    res.status(200).json(allWalkers);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+
 module.exports = {
   createWalker,
   findWalkerById,
   updateWalkerById,
   deleteWalkerById,
   findWalkersNearRestaurant,
+  getAllWalkers
 };

@@ -81,6 +81,15 @@ async function addMenuItemToRestaurant(req, res) {
   }
 }
 
+async function getAllRestaurants(req, res) {
+  try {
+    const restaurants = await restaurantService.getAllRestaurants();
+    res.status(200).json(restaurants);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
 module.exports = {
   createRestaurant,
   findRestaurantById,
@@ -88,4 +97,5 @@ module.exports = {
   deleteRestaurantById,
   getRestaurantMenuById,
   addMenuItemToRestaurant,
+  getAllRestaurants
 };

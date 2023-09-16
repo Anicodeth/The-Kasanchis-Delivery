@@ -41,7 +41,7 @@ async function deleteWalkerById(walkerId) {
 
 async function findWalkersNearRestaurant(restaurantCoordinates) {
     try {
-      const radiusInMeters = 500; // Set the radius to 500 meters
+      const radiusInMeters = 1000000; // Set the radius to 500 meters
   
       // Use the $nearSphere operator to find walkers within the specified radius
       const walkers = await Walker.find({
@@ -62,10 +62,21 @@ async function findWalkersNearRestaurant(restaurantCoordinates) {
     }
   }
 
+
+ async function getAllWalkers() {
+    try {
+      const allWalkers = await Walker.find({}); // Use Mongoose or your preferred database library
+      return allWalkers;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 module.exports = {
   createWalker,
   findWalkerById,
   updateWalkerById,
   deleteWalkerById,
   findWalkersNearRestaurant,
+  getAllWalkers
 };

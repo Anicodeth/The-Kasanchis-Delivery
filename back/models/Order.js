@@ -7,17 +7,17 @@ const orderSchema = new mongoose.Schema({
   restaurant: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Restaurant', // Reference to the Restaurant model
-    required: true,
   },
   items: [
     {
       name: String,
+      restaurantName: String,
       price: Number,
+      quantity: Number,
     },
   ],
   totalAmount: {
     type: Number,
-    required: true,
   },
   status: {
     type: String,

@@ -20,5 +20,8 @@ router.get('/restaurants/:restaurantId/menu', restaurantController.getRestaurant
 // Add a new menu item to a restaurant by ID
 router.post('/restaurants/:restaurantId/menu', restaurantController.addMenuItemToRestaurant);
 
+// Route to get all restaurants
+router.get('/restaurants', restaurantController.getAllRestaurants);
+
 module.exports = router;
 
